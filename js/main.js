@@ -60,6 +60,19 @@ AOS.init({
       function () {}
     );
   });
+  $(document).on("click", '#ftco-footer-nav a[href^="#"]', function (event) {
+    event.preventDefault();
+
+    var href = $.attr(this, "href");
+
+    $("html, body").animate(
+      {
+        scrollTop: $($.attr(this, "href")).offset().top - 70,
+      },
+      500,
+      function () {}
+    );
+  });
 
   $(".home-slider").owlCarousel({
     loop: true,
