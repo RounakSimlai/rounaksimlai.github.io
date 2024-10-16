@@ -78,48 +78,30 @@ AOS.init({
       animateOut: "fadeOut",
       animateIn: "fadeIn",
       nav: false,
+      dots: false,
+      pullDrag: false,
+      touchDrag: false,
+      mouseDrag: false,
       autoplayHoverPause: false,
-      items: 1,
-      navText: [
-        "<span class='ion-md-arrow-back'></span>",
-        "<span class='ion-chevron-right'></span>",
-      ],
-      responsive: {
-        0: {
-          items: 1,
-        },
-        600: {
-          items: 1,
-        },
-        1000: {
-          items: 1,
-        },
-      },
+      items: 1
     });
   };
   carousel();
 
-  $("nav .dropdown").hover(
-    function () {
-      var $this = $(this);
-      // 	 timer;
-      // clearTimeout(timer);
-      $this.addClass("show");
-      $this.find("> a").attr("aria-expanded", true);
-      // $this.find('.dropdown-menu').addClass('animated-fast fadeInUp show');
-      $this.find(".dropdown-menu").addClass("show");
-    },
-    function () {
-      var $this = $(this);
-      // timer;
-      // timer = setTimeout(function(){
-      $this.removeClass("show");
-      $this.find("> a").attr("aria-expanded", false);
-      // $this.find('.dropdown-menu').removeClass('animated-fast fadeInUp show');
-      $this.find(".dropdown-menu").removeClass("show");
-      // }, 100);
-    }
-  );
+  // $("nav .dropdown").hover(
+  //   function () {
+  //     var $this = $(this);
+  //     $this.addClass("show");
+  //     $this.find("> a").attr("aria-expanded", true);
+  //     $this.find(".dropdown-menu").addClass("show");
+  //   },
+  //   function () {
+  //     var $this = $(this);
+  //     $this.removeClass("show");
+  //     $this.find("> a").attr("aria-expanded", false);
+  //     $this.find(".dropdown-menu").removeClass("show");
+  //   }
+  // );
 
   $("#dropdown04").on("show.bs.dropdown", function () {
     console.log("show");
@@ -264,75 +246,3 @@ AOS.init({
     fixedContentPos: false,
   });
 })(jQuery);
-
-function validateForm() {
-  let name = document.forms["contactForm"]["name"].value;
-  let email = document.forms["contactForm"]["email"].value;
-  let subject = document.forms["contactForm"]["subject"].value;
-  let message = document.forms["contactForm"]["message"].value;
-
-  if (name == "" || /\d/.test(name)) {
-    Swal.fire({
-      title: "Error!",
-      text: "Name must be filled out and must only contain letters",
-      icon: "error",
-      timer: 1500,
-	  showCancelButton: false,
-	  showConfirmButton: false
-    });
-    return false;
-  } else if (email == "") {
-    Swal.fire({
-      title: "Error!",
-      text: "Email must be filled out",
-      icon: "error",
-      timer: 1500,
-	  showCancelButton: false,
-	  showConfirmButton: false
-    });
-    return false;
-  } else if (!email.includes("@")) {
-    Swal.fire({
-      title: "Error!",
-      text: "Email does not seem to be valid",
-      icon: "error",
-      timer: 1500,
-	  showCancelButton: false,
-	  showConfirmButton: false
-    });
-    return false;
-  } else if (subject == "") {
-    Swal.fire({
-      title: "Error!",
-      text: "Subject must be filled out",
-      icon: "error",
-      timer: 1500,
-	  showCancelButton: false,
-	  showConfirmButton: false
-    });
-    return false;
-  } else if (message == "") {
-    Swal.fire({
-      title: "Error!",
-      text: "Message must be filled out",
-      icon: "error",
-      timer: 1500,
-	  showCancelButton: false,
-	  showConfirmButton: false
-    });
-    return false;
-  } else {
-    Swal.fire({
-      title: "Success!",
-      text: "Email Has been Received!",
-      icon: "success",
-      timer: 1500,
-	  showCancelButton: false,
-	  showConfirmButton: false
-    });
-  }
-  document.forms["contactForm"]["name"].value = "";
-  document.forms["contactForm"]["email"].value = "";
-  document.forms["contactForm"]["subject"].value = "";
-  document.forms["contactForm"]["message"].value = "";
-}
